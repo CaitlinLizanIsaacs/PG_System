@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace PG_System
 {
-    public partial class Login : Form
+    public partial class BookingSummary : Form
     {
-        public Login()
+        public BookingSummary()
         {
             InitializeComponent();
         }

@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace PG_System
 {
-    public partial class Login : Form
+    public partial class Order : Form
     {
-        public Login()
+        public Order()
         {
             InitializeComponent();
         }
