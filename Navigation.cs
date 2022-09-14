@@ -10,17 +10,11 @@ using System.Windows.Forms;
 
 namespace PG_System
 {
-    public partial class Order : Form
+    public partial class Navigation : Form
     {
-        public Order()
+        public Navigation()
         {
             InitializeComponent();
-        }
-
-        private void btnPay_Click(object sender, EventArgs e)
-        {
-            Pay payment = new Pay();
-            payment.Show();
         }
     }
 }

@@ -16,5 +16,11 @@ namespace PG_System
         {
             InitializeComponent();
         }
+
+        private void btnPayFull_Click(object sender, EventArgs e)
+        {
+            BookingSummary bs = new BookingSummary();
+            bs.Show();
+        }
     }
 }

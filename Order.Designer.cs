@@ -123,6 +123,7 @@
             this.btnPay.TabIndex = 8;
             this.btnPay.Text = "Proceed to Pay";
             this.btnPay.UseVisualStyleBackColor = true;
+            this.btnPay.Click += new System.EventHandler(this.btnPay_Click);
             // 
             // monthCalendarCheckIn
             // 

@@ -55,6 +55,7 @@
             this.btnPayFull.TabIndex = 2;
             this.btnPayFull.Text = "Pay";
             this.btnPayFull.UseVisualStyleBackColor = true;
+            this.btnPayFull.Click += new System.EventHandler(this.btnPayFull_Click);
             // 
             // label2
             // 
