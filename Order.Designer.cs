@@ -48,10 +48,10 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(256, 9);
+            this.label1.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(284, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(346, 24);
+            this.label1.Size = new System.Drawing.Size(293, 25);
             this.label1.TabIndex = 1;
             this.label1.Text = "Welcome to the Pacific Guesthouse";
             // 
@@ -126,13 +126,15 @@
             // 
             // monthCalendarCheckIn
             // 
+            this.monthCalendarCheckIn.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.monthCalendarCheckIn.Location = new System.Drawing.Point(227, 82);
             this.monthCalendarCheckIn.Name = "monthCalendarCheckIn";
             this.monthCalendarCheckIn.TabIndex = 9;
             // 
             // monthCalendarCheckOut
             // 
-            this.monthCalendarCheckOut.Location = new System.Drawing.Point(589, 82);
+            this.monthCalendarCheckOut.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.monthCalendarCheckOut.Location = new System.Drawing.Point(590, 82);
             this.monthCalendarCheckOut.Name = "monthCalendarCheckOut";
             this.monthCalendarCheckOut.TabIndex = 10;
             // 
