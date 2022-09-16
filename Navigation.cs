@@ -19,8 +19,24 @@ namespace PG_System
 
         private void clientsRecordsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+            MaintainClient client = new MaintainClient();
+            client.MdiParent = this;
+            client.Show();
 
+        }
+
+        private void hotelBookingRecordsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MaintainHotelBookings hotel = new MaintainHotelBookings();
+            hotel.MdiParent = this;
+            hotel.Show();
+        }
+
+        private void employeeShiftsRecordsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MaintainEmployeeShifts shifts = new MaintainEmployeeShifts();
+            shifts.MdiParent = this;
+            shifts.Show();
         }
     }
 }

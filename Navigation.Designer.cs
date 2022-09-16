@@ -59,12 +59,14 @@
             this.hotelBookingRecordsToolStripMenuItem.Name = "hotelBookingRecordsToolStripMenuItem";
             this.hotelBookingRecordsToolStripMenuItem.Size = new System.Drawing.Size(137, 20);
             this.hotelBookingRecordsToolStripMenuItem.Text = "Hotel Booking records";
+            this.hotelBookingRecordsToolStripMenuItem.Click += new System.EventHandler(this.hotelBookingRecordsToolStripMenuItem_Click);
             // 
             // employeeShiftsRecordsToolStripMenuItem
             // 
             this.employeeShiftsRecordsToolStripMenuItem.Name = "employeeShiftsRecordsToolStripMenuItem";
             this.employeeShiftsRecordsToolStripMenuItem.Size = new System.Drawing.Size(144, 20);
             this.employeeShiftsRecordsToolStripMenuItem.Text = "Employee shifts records";
+            this.employeeShiftsRecordsToolStripMenuItem.Click += new System.EventHandler(this.employeeShiftsRecordsToolStripMenuItem_Click);
             // 
             // Navigation
             // 
