@@ -28,6 +28,8 @@ namespace PG_System
             Pay payment = new Pay();
             payment.Show();
 
+
+
             conn = new SqlConnection(connectionString);
             conn.Open();
             cmd = new SqlCommand("INSERT INTO ClientCredidentialsTable (clientReference,title,surname,email) VALUES (@clientReference,@title,@surname,@email)",
@@ -50,7 +52,7 @@ namespace PG_System
             string sql;
             SqlDataAdapter adapter = new SqlDataAdapter();
 
-            sql = @"Select * FROM TableInformation";
+            sql = @"Select * FROM ClientCredentialsTable";
             cmd = new SqlCommand(sql, conn);
 
             DataSet ds = new DataSet();
@@ -62,6 +64,17 @@ namespace PG_System
             dataGridView1.DataMember = "Info";
             
             conn.Close();
+
+            Random rand = new Random();
+            rand.Next(1,100);
+
+
+            string word = "CLIREF";
+
+            string clientRef = word + rand;
+
+            clientRef = lblRef.Text;
+            
 
 
 
