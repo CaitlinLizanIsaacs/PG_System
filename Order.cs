@@ -44,6 +44,8 @@ namespace PG_System
             cmd.Parameters.AddWithValue("@numberOfChildren", txtKids.Text);
             cmd.ExecuteNonQuery();
 
+            conn.Close();
+
         }
     }
 }

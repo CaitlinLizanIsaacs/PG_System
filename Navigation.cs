@@ -16,5 +16,11 @@ namespace PG_System
         {
             InitializeComponent();
         }
+
+        private void clientsRecordsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+
+        }
     }
 }

@@ -52,6 +52,7 @@
             this.clientsRecordsToolStripMenuItem.Name = "clientsRecordsToolStripMenuItem";
             this.clientsRecordsToolStripMenuItem.Size = new System.Drawing.Size(97, 20);
             this.clientsRecordsToolStripMenuItem.Text = "Clients records";
+            this.clientsRecordsToolStripMenuItem.Click += new System.EventHandler(this.clientsRecordsToolStripMenuItem_Click);
             // 
             // hotelBookingRecordsToolStripMenuItem
             // 
