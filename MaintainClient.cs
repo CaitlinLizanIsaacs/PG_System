@@ -30,14 +30,12 @@ namespace PG_System
 
             conn = new SqlConnection(connectionString);
             conn.Open();
-            cmd = new SqlCommand("INSERT INTO ClientCredidentialsTb (title,surname,email) VALUES (@title,@surname,@email)",
+            cmd = new SqlCommand("INSERT INTO ClientCredidentialsTable (clientReference,title,surname,email) VALUES (@clientReference,@title,@surname,@email)",
                 conn);
-            cmd.Parameters.AddWithValue("@check-InDate", monthCalendarCheckIn.SelectionRange.ToString());
-            cmd.Parameters.AddWithValue("@check-outDate", monthCalendarCheckOut.SelectionRange.ToString());
-            cmd.Parameters.AddWithValue("@TotalCost", lblTotal.Text);
-            cmd.Parameters.AddWithValue("@numberOfRooms", txtRooms.Text);
-            cmd.Parameters.AddWithValue("@numberOfAdults", txtAdults.Text);
-            cmd.Parameters.AddWithValue("@numberOfChildren", txtKids.Text);
+            cmd.Parameters.AddWithValue("@clientReference",lblRef.Text);
+            cmd.Parameters.AddWithValue("@title", txtTitle.Text );
+            cmd.Parameters.AddWithValue("@surname", txtSurname.Text);
+            cmd.Parameters.AddWithValue("@email", txtEmail.Text);
             cmd.ExecuteNonQuery();
 
             conn.Close();
@@ -60,8 +58,8 @@ namespace PG_System
             adapt.SelectCommand = cmd;
             adapt.Fill(ds, "Info"); 
  
-            dataGridView1.DataSource = ds; // Set the datasource to the dataset
-            dataGridView1.DataMember = "Info";//Point to the table in the dataset to
+            dataGridView1.DataSource = ds; 
+            dataGridView1.DataMember = "Info";
             
             conn.Close();
 
