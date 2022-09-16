@@ -1,1 +1,3 @@
-# PG_System
+# Pacific Guesthouse System
+
+## About
