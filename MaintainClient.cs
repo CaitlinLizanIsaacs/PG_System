@@ -25,13 +25,12 @@ namespace PG_System
 
         private void btnInsert_Click(object sender, EventArgs e)
         {
-            Pay payment = new Pay();
-            payment.Show();
 
             conn = new SqlConnection(connectionString);
             conn.Open();
-            cmd = new SqlCommand("INSERT INTO ClientCredTb WHERE (surname,name,title,email) VALUES (@surname,@name,@title,@email)",
+            cmd = new SqlCommand("INSERT INTO ClientCredTb (Id,surname,name,title,email) VALUES (@Id,@surname,@name,@title,@email)",
                 conn);
+            cmd.Parameters.AddWithValue("@Id",txtId.Text);
             cmd.Parameters.AddWithValue("@name",txtName.Text);
             cmd.Parameters.AddWithValue("@title", txtTitle.Text );
             cmd.Parameters.AddWithValue("@surname", txtSurname.Text);
@@ -43,65 +42,86 @@ namespace PG_System
             MessageBox.Show("Client record inserted");
 
             loadAll();
+
+        
         }
 
         private void loadAll()
         {
-            conn.Open();
+            SqlConnection con;
+            string connectionString = @"Data Source=DESKTOP-EM51E9U;Initial Catalog=PacificGuesthouseDb;Integrated Security=True";
+
+            con = new SqlConnection(connectionString);
+
+            con.Open();
+
             adapt = new SqlDataAdapter();
             DataSet ds = new DataSet();
 
             string sql = "SELECT * FROM ClientCredTb";
 
-            cmd = new SqlCommand(sql, conn);
+            cmd = new SqlCommand(sql, con);
             adapt.SelectCommand = cmd;
             adapt.Fill(ds, "ClientCredTb");
 
             dataGridView1.DataSource = ds;
             dataGridView1.DataMember = "ClientCredTb";
 
-            conn.Close();
+            con.Close();
         }
 
         private void MaintainClient_Load(object sender, EventArgs e)
         {
-
+            loadAll();
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            string sql = "UPDATE FROM ClientCredentialsTable WHERE (clientReference,title,surname,email) VALUES (@clientReference,@title,@surname,@email)";
-            cmd = new SqlCommand(sql, conn);
+            conn = new SqlConnection(connectionString);
+            conn.Open();
+            SqlCommand cmd = new SqlCommand("UPDATE ClientCredTb SET Id=@Id,surname=@surname,name=@name,title=@title,email=@email",
+                conn);
+            cmd.Parameters.AddWithValue("Id", txtId.Text);
             cmd.Parameters.AddWithValue("@name", txtName.Text);
             cmd.Parameters.AddWithValue("@title", txtTitle.Text);
             cmd.Parameters.AddWithValue("@surname", txtSurname.Text);
             cmd.Parameters.AddWithValue("@email", txtEmail.Text);
             cmd.ExecuteNonQuery();
+
             conn.Close();
 
-            MessageBox.Show("Client record has been update");
+            MessageBox.Show("Client record updated");
 
             loadAll();
 
-            
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            conn.Open();
 
-            string sql = "DELETE FROM ClientCredentialsTable WHERE (clientReference,title,surname,email) VALUES (@clientReference,@title,@surname,@email)";
-            cmd = new SqlCommand(sql, conn);
-            cmd.Parameters.AddWithValue("@clientReference", txtName.Text);
+            SqlConnection con;
+            string connectionString = @"Data Source=DESKTOP-EM51E9U;Initial Catalog=PacificGuesthouseDb;Integrated Security=True";
+
+            con = new SqlConnection(connectionString);
+            con.Open();
+
+            string sql = "DELETE ClientCredTb WHERE Id=@Id,surname=@surname,name=@name,title=@title,email=@email";
+            SqlCommand com = new SqlCommand(sql, con);
+
+            cmd.Parameters.AddWithValue("Id", txtId.Text);
+            cmd.Parameters.AddWithValue("@name", txtName.Text);
             cmd.Parameters.AddWithValue("@title", txtTitle.Text);
             cmd.Parameters.AddWithValue("@surname", txtSurname.Text);
             cmd.Parameters.AddWithValue("@email", txtEmail.Text);
             cmd.ExecuteNonQuery();
-            conn.Close();
+
+
+            con.Close();
 
             MessageBox.Show("Client recorded has been deleted");
 
             loadAll();
+            
         }
     }
 }

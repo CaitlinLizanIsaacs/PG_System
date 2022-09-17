@@ -43,6 +43,8 @@
             this.txtSurname = new System.Windows.Forms.TextBox();
             this.txtTitle = new System.Windows.Forms.TextBox();
             this.txtName = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtId = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -67,9 +69,9 @@
             // btnInsert
             // 
             this.btnInsert.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnInsert.Location = new System.Drawing.Point(471, 300);
+            this.btnInsert.Location = new System.Drawing.Point(455, 260);
             this.btnInsert.Name = "btnInsert";
-            this.btnInsert.Size = new System.Drawing.Size(206, 34);
+            this.btnInsert.Size = new System.Drawing.Size(222, 34);
             this.btnInsert.TabIndex = 11;
             this.btnInsert.Text = "Manual Insert";
             this.btnInsert.UseVisualStyleBackColor = true;
@@ -78,9 +80,9 @@
             // btnUpdate
             // 
             this.btnUpdate.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpdate.Location = new System.Drawing.Point(12, 300);
+            this.btnUpdate.Location = new System.Drawing.Point(455, 310);
             this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(199, 34);
+            this.btnUpdate.Size = new System.Drawing.Size(222, 34);
             this.btnUpdate.TabIndex = 12;
             this.btnUpdate.Text = "Manual Update";
             this.btnUpdate.UseVisualStyleBackColor = true;
@@ -89,9 +91,9 @@
             // btnDelete
             // 
             this.btnDelete.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDelete.Location = new System.Drawing.Point(217, 300);
+            this.btnDelete.Location = new System.Drawing.Point(257, 300);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(232, 34);
+            this.btnDelete.Size = new System.Drawing.Size(192, 34);
             this.btnDelete.TabIndex = 13;
             this.btnDelete.Text = "Manual Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
@@ -187,11 +189,31 @@
             this.txtName.Size = new System.Drawing.Size(100, 26);
             this.txtName.TabIndex = 25;
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(457, 74);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(28, 20);
+            this.label7.TabIndex = 26;
+            this.label7.Text = "Id: ";
+            // 
+            // txtId
+            // 
+            this.txtId.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtId.Location = new System.Drawing.Point(577, 82);
+            this.txtId.Name = "txtId";
+            this.txtId.Size = new System.Drawing.Size(100, 26);
+            this.txtId.TabIndex = 27;
+            // 
             // MaintainClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(804, 450);
+            this.Controls.Add(this.txtId);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.txtTitle);
             this.Controls.Add(this.txtSurname);
@@ -233,5 +255,7 @@
         private System.Windows.Forms.TextBox txtSurname;
         private System.Windows.Forms.TextBox txtTitle;
         private System.Windows.Forms.TextBox txtName;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txtId;
     }
 }

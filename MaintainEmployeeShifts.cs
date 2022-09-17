@@ -32,7 +32,7 @@ namespace PG_System
             conn.Open();
             cmd = new SqlCommand("INSERT INTO ClientCredTb WHERE (surname,name,title,email) VALUES (@surname,@name,@title,@email)",
                 conn);
-            cmd.Parameters.AddWithValue("@name", txtName.Text);
+            //cmd.Parameters.AddWithValue("@name", txtName.Text);
             cmd.Parameters.AddWithValue("@title", txtTitle.Text);
             cmd.Parameters.AddWithValue("@surname", txtSurname.Text);
             cmd.Parameters.AddWithValue("@email", txtEmail.Text);
