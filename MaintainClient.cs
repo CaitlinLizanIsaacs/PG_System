@@ -43,6 +43,7 @@ namespace PG_System
 
             loadAll();
 
+            Clear();
         
         }
 
@@ -70,6 +71,15 @@ namespace PG_System
             con.Close();
         }
 
+        private void Clear()
+        {
+            txtEmail.Clear();
+            txtId.Clear();
+            txtName.Clear();
+            txtSurname.Clear();
+            txtTitle.Clear();
+        }
+
         private void MaintainClient_Load(object sender, EventArgs e)
         {
             loadAll();
@@ -81,11 +91,11 @@ namespace PG_System
             conn.Open();
             SqlCommand cmd = new SqlCommand("UPDATE ClientCredTb SET Id=@Id,surname=@surname,name=@name,title=@title,email=@email",
                 conn);
-            cmd.Parameters.AddWithValue("Id", txtId.Text);
-            cmd.Parameters.AddWithValue("@name", txtName.Text);
-            cmd.Parameters.AddWithValue("@title", txtTitle.Text);
-            cmd.Parameters.AddWithValue("@surname", txtSurname.Text);
-            cmd.Parameters.AddWithValue("@email", txtEmail.Text);
+            cmd.Parameters.Add("Id", txtId.Text);
+            cmd.Parameters.Add("@name", txtName.Text);
+            cmd.Parameters.Add("@title", txtTitle.Text);
+            cmd.Parameters.Add("@surname", txtSurname.Text);
+            cmd.Parameters.Add("@email", txtEmail.Text);
             cmd.ExecuteNonQuery();
 
             conn.Close();
@@ -93,6 +103,8 @@ namespace PG_System
             MessageBox.Show("Client record updated");
 
             loadAll();
+
+            
 
         }
 
@@ -105,23 +117,29 @@ namespace PG_System
             con = new SqlConnection(connectionString);
             con.Open();
 
-            string sql = "DELETE ClientCredTb WHERE Id=@Id,surname=@surname,name=@name,title=@title,email=@email";
+            string sql = "DELETE ClientCredTb WHERE Id=@Id";
             SqlCommand com = new SqlCommand(sql, con);
 
             cmd.Parameters.AddWithValue("Id", txtId.Text);
-            cmd.Parameters.AddWithValue("@name", txtName.Text);
+            /*cmd.Parameters.AddWithValue("@name", txtName.Text);
             cmd.Parameters.AddWithValue("@title", txtTitle.Text);
             cmd.Parameters.AddWithValue("@surname", txtSurname.Text);
-            cmd.Parameters.AddWithValue("@email", txtEmail.Text);
+            cmd.Parameters.AddWithValue("@email", txtEmail.Text);*/
+            //con.Open();
             cmd.ExecuteNonQuery();
 
 
             con.Close();
 
-            MessageBox.Show("Client recorded has been deleted");
+            MessageBox.Show("Client record has been deleted");
 
             loadAll();
             
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

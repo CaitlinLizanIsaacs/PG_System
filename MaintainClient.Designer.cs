@@ -57,19 +57,21 @@
             this.label1.Size = new System.Drawing.Size(293, 25);
             this.label1.TabIndex = 2;
             this.label1.Text = "Welcome to the Pacific Guesthouse";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(12, 74);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(437, 220);
+            this.dataGridView1.Size = new System.Drawing.Size(505, 300);
             this.dataGridView1.TabIndex = 10;
             // 
             // btnInsert
             // 
             this.btnInsert.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnInsert.Location = new System.Drawing.Point(455, 260);
+            this.btnInsert.Location = new System.Drawing.Point(523, 260);
             this.btnInsert.Name = "btnInsert";
             this.btnInsert.Size = new System.Drawing.Size(222, 34);
             this.btnInsert.TabIndex = 11;
@@ -80,7 +82,7 @@
             // btnUpdate
             // 
             this.btnUpdate.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpdate.Location = new System.Drawing.Point(455, 310);
+            this.btnUpdate.Location = new System.Drawing.Point(523, 300);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(222, 34);
             this.btnUpdate.TabIndex = 12;
@@ -91,9 +93,9 @@
             // btnDelete
             // 
             this.btnDelete.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDelete.Location = new System.Drawing.Point(257, 300);
+            this.btnDelete.Location = new System.Drawing.Point(523, 340);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(192, 34);
+            this.btnDelete.Size = new System.Drawing.Size(222, 34);
             this.btnDelete.TabIndex = 13;
             this.btnDelete.Text = "Manual Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
@@ -114,14 +116,14 @@
             this.txtSearch.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSearch.Location = new System.Drawing.Point(69, 36);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(380, 26);
+            this.txtSearch.Size = new System.Drawing.Size(448, 26);
             this.txtSearch.TabIndex = 15;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(455, 109);
+            this.label3.Location = new System.Drawing.Point(541, 115);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(52, 20);
             this.label3.TabIndex = 16;
@@ -131,7 +133,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(455, 178);
+            this.label4.Location = new System.Drawing.Point(525, 184);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(70, 20);
             this.label4.TabIndex = 17;
@@ -141,7 +143,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(455, 146);
+            this.label5.Location = new System.Drawing.Point(554, 147);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(41, 20);
             this.label5.TabIndex = 18;
@@ -151,7 +153,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(455, 210);
+            this.label6.Location = new System.Drawing.Point(541, 216);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(54, 20);
             this.label6.TabIndex = 19;
@@ -160,7 +162,7 @@
             // txtEmail
             // 
             this.txtEmail.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEmail.Location = new System.Drawing.Point(577, 210);
+            this.txtEmail.Location = new System.Drawing.Point(645, 210);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(100, 26);
             this.txtEmail.TabIndex = 21;
@@ -168,7 +170,7 @@
             // txtSurname
             // 
             this.txtSurname.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSurname.Location = new System.Drawing.Point(577, 178);
+            this.txtSurname.Location = new System.Drawing.Point(645, 178);
             this.txtSurname.Name = "txtSurname";
             this.txtSurname.Size = new System.Drawing.Size(100, 26);
             this.txtSurname.TabIndex = 22;
@@ -176,7 +178,7 @@
             // txtTitle
             // 
             this.txtTitle.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTitle.Location = new System.Drawing.Point(577, 146);
+            this.txtTitle.Location = new System.Drawing.Point(645, 141);
             this.txtTitle.Name = "txtTitle";
             this.txtTitle.Size = new System.Drawing.Size(100, 26);
             this.txtTitle.TabIndex = 23;
@@ -184,7 +186,7 @@
             // txtName
             // 
             this.txtName.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtName.Location = new System.Drawing.Point(577, 114);
+            this.txtName.Location = new System.Drawing.Point(645, 109);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(100, 26);
             this.txtName.TabIndex = 25;
@@ -193,7 +195,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(457, 74);
+            this.label7.Location = new System.Drawing.Point(565, 80);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(28, 20);
             this.label7.TabIndex = 26;
@@ -202,7 +204,7 @@
             // txtId
             // 
             this.txtId.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtId.Location = new System.Drawing.Point(577, 82);
+            this.txtId.Location = new System.Drawing.Point(645, 74);
             this.txtId.Name = "txtId";
             this.txtId.Size = new System.Drawing.Size(100, 26);
             this.txtId.TabIndex = 27;
