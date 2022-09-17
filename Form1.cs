@@ -35,7 +35,7 @@ namespace PG_System
                 username = txtLogin.Text;
                 password = txtPassword.Text;
 
-                String query = "SELECT * FROM ClientCredentialsTable WHERE clientReference = '" + txtLogin.Text + "' AND surname = '" + txtPassword.Text + "'";
+                String query = "SELECT * FROM ClientCreditialsTable WHERE clientReference = '" + txtLogin.Text + "' AND surname = '" + txtPassword.Text + "'";
                 adapt = new SqlDataAdapter(query, conn);
 
                 DataTable dtable = new DataTable();
@@ -45,6 +45,9 @@ namespace PG_System
                 {
                     username = txtLogin.Text;
                     password = txtPassword.Text;
+
+                    Order order = new Order();
+                    order.Show();
                 }
                 else
                 {

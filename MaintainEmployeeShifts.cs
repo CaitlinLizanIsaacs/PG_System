@@ -16,5 +16,10 @@ namespace PG_System
         {
             InitializeComponent();
         }
+
+        private void btnInsert_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
