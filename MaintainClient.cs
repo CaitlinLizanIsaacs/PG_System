@@ -30,9 +30,9 @@ namespace PG_System
 
             conn = new SqlConnection(connectionString);
             conn.Open();
-            cmd = new SqlCommand("INSERT INTO ClientCredTb WHERE (clientReference,title,surname,email) VALUES (@clientReference,@title,@surname,@email)",
+            cmd = new SqlCommand("INSERT INTO ClientCredTb WHERE (surname,name,title,email) VALUES (@surname,@name,@title,@email)",
                 conn);
-            cmd.Parameters.AddWithValue("@clientReference",lblRef.Text);
+            cmd.Parameters.AddWithValue("@name",txtName.Text);
             cmd.Parameters.AddWithValue("@title", txtTitle.Text );
             cmd.Parameters.AddWithValue("@surname", txtSurname.Text);
             cmd.Parameters.AddWithValue("@email", txtEmail.Text);
@@ -41,6 +41,8 @@ namespace PG_System
             conn.Close();
 
             MessageBox.Show("Client record inserted");
+
+            loadAll();
         }
 
         private void loadAll()
@@ -64,22 +66,13 @@ namespace PG_System
         private void MaintainClient_Load(object sender, EventArgs e)
         {
 
-            Random rand = new Random();
-            rand.Next(1,100);
-
-
-            string word = "CLIREF";
-
-            string clientRef = word + rand;
-
-            clientRef = lblRef.Text;
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             string sql = "UPDATE FROM ClientCredentialsTable WHERE (clientReference,title,surname,email) VALUES (@clientReference,@title,@surname,@email)";
             cmd = new SqlCommand(sql, conn);
-            cmd.Parameters.AddWithValue("@clientReference", lblRef.Text);
+            cmd.Parameters.AddWithValue("@name", txtName.Text);
             cmd.Parameters.AddWithValue("@title", txtTitle.Text);
             cmd.Parameters.AddWithValue("@surname", txtSurname.Text);
             cmd.Parameters.AddWithValue("@email", txtEmail.Text);
@@ -87,6 +80,8 @@ namespace PG_System
             conn.Close();
 
             MessageBox.Show("Client record has been update");
+
+            loadAll();
 
             
         }
@@ -97,7 +92,7 @@ namespace PG_System
 
             string sql = "DELETE FROM ClientCredentialsTable WHERE (clientReference,title,surname,email) VALUES (@clientReference,@title,@surname,@email)";
             cmd = new SqlCommand(sql, conn);
-            cmd.Parameters.AddWithValue("@clientReference", lblRef.Text);
+            cmd.Parameters.AddWithValue("@clientReference", txtName.Text);
             cmd.Parameters.AddWithValue("@title", txtTitle.Text);
             cmd.Parameters.AddWithValue("@surname", txtSurname.Text);
             cmd.Parameters.AddWithValue("@email", txtEmail.Text);
@@ -105,6 +100,8 @@ namespace PG_System
             conn.Close();
 
             MessageBox.Show("Client recorded has been deleted");
+
+            loadAll();
         }
     }
 }
