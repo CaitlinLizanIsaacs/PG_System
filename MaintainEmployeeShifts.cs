@@ -158,7 +158,7 @@ namespace PG_System
 
             if (reader.Read())
             {
-                //txtId.Text = reader["employeeId"].ToString();
+                
                 txtName.Text = reader["name"].ToString();
                 txtSurname.Text = reader["surname"].ToString();
                 txtOrderReference.Text = reader["orderReference"].ToString();
