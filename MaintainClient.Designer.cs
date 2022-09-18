@@ -108,16 +108,16 @@
             this.label2.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(13, 34);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(59, 20);
+            this.label2.Size = new System.Drawing.Size(74, 20);
             this.label2.TabIndex = 14;
-            this.label2.Text = "Search: ";
+            this.label2.Text = "Search Id: ";
             // 
             // txtSearch
             // 
             this.txtSearch.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSearch.Location = new System.Drawing.Point(69, 36);
+            this.txtSearch.Location = new System.Drawing.Point(78, 37);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(448, 26);
+            this.txtSearch.Size = new System.Drawing.Size(439, 26);
             this.txtSearch.TabIndex = 15;
             // 
             // label3
