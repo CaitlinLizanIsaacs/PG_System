@@ -107,13 +107,17 @@ namespace PG_System
             SqlCommand com = new SqlCommand(Query, connect);
             com.Parameters.AddWithValue("@email",email);
             com.Parameters.AddWithValue("@Id",txtId.Text);
-          
+
+
             com.ExecuteNonQuery();
 
             connect.Close();
 
             MessageBox.Show("Record has been updated");
             loadAll();
+
+            txtEmail.Clear();
+            
 
         }
 
@@ -130,11 +134,7 @@ namespace PG_System
             SqlCommand com = new SqlCommand(sql, con);
 
             com.Parameters.AddWithValue("Id", txtId.Text);
-            /*cmd.Parameters.AddWithValue("@name", txtName.Text);
-            cmd.Parameters.AddWithValue("@title", txtTitle.Text);
-            cmd.Parameters.AddWithValue("@surname", txtSurname.Text);
-            cmd.Parameters.AddWithValue("@email", txtEmail.Text);*/
-            //con.Open();
+            
             com.ExecuteNonQuery();
 
 
@@ -148,24 +148,6 @@ namespace PG_System
 
         private void label1_Click(object sender, EventArgs e)
         {
-            /*conn = new SqlConnection(connectionString);
-            conn.Open();
-            SqlCommand cmd = new SqlCommand("UPDATE ClientCredTb SET Id=@Id,surname=@surname,name=@name,title=@title,email=@email",
-                conn);
-            cmd.Parameters.AddWithValue("Id", txtId.Text);
-            cmd.Parameters.AddWithValue("@name", txtName.Text);
-            cmd.Parameters.AddWithValue("@title", txtTitle.Text);
-            cmd.Parameters.AddWithValue("@surname", txtSurname.Text);
-            cmd.Parameters.AddWithValue("@email", txtEmail.Text);
-            cmd.ExecuteNonQuery();
-
-            conn.Close();
-
-            name = '"+Name+"', surname = '"+Surname+"', title = '"+Title+"', email = '"+email+ "'WHERE Id = '"+txtId.Text;
-
-            MessageBox.Show("Client record updated");
-
-            loadAll();*/
         }
 
         private void button1_Click(object sender, EventArgs e)
