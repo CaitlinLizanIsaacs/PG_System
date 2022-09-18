@@ -34,9 +34,9 @@ namespace PG_System
                 conn.Open();
                 cmd = new SqlCommand("INSERT INTO paymentTb (paymentId, paymentDate,totalCost, orderRef) VALUES (@payemntId,@paymentDate,@totalCost, @orderRef)",
                     conn);
-                cmd.Parameters.AddWithValue("@paymentId", txtPayment.Text.ToString());
+                cmd.Parameters.AddWithValue("@paymentId", txtPayment.Text);
                 cmd.Parameters.AddWithValue("@orderRef",txtOrder.Text.ToString());
-                cmd.Parameters.AddWithValue("@paymentDate", dateTimePicker1.Value.ToString());
+                cmd.Parameters.AddWithValue("@paymentDate", dateTimePicker1.Text = DateTime.Now.ToLongDateString());
                 cmd.Parameters.AddWithValue("@totalCost", textBox1.Text.ToString());
                 cmd.ExecuteNonQuery();
 
@@ -49,6 +49,11 @@ namespace PG_System
             {
                 MessageBox.Show(ex.Message);
             }
+
+
+
+            
         }
     }
-}
+    }
+

@@ -2,13 +2,12 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.Sql;
-using System.Data.SqlClient;
 
 namespace PG_System
 {
@@ -19,110 +18,104 @@ namespace PG_System
             InitializeComponent();
         }
 
-        private void btnLogin_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
-            Manager();
+            Client();
         }
 
         private void Client()
         {
-            SqlConnection conn = new SqlConnection("Data Source=DESKTOP-EM51E9U;Initial Catalog=PacificGuesthouseDb;Integrated Security=True");
-            conn.Open();
-            SqlDataAdapter adap = new SqlDataAdapter("SELECT email, Id FROM ClientCredTb WHERE email = '"+txtLogin.Text+"'and Id = '"+txtPassword.Text+"'",conn);
-            DataTable dt = new DataTable();
-            adap.Fill(dt);
+            string ConnectionString = "Data Source=DESKTOP-EM51E9U;Initial Catalog=PacificGuesthouseDb;Integrated Security=True";
 
-            if (dt.Rows[0][0].ToString() == "1")
+            SqlConnection connect = new SqlConnection(ConnectionString);
+            connect.Open();
+
+            string Employee = txtLogin.Text;
+            //string Surname = txtPassword.Text;
+
+
+            string Query = "SELECT * FROM ClientCredTb WHERE Id = " + txtLogin.Text;
+
+            SqlCommand com = new SqlCommand(Query, connect);
+            var reader = com.ExecuteReader();
+
+            if (reader.Read())
             {
-                this.Hide();
-                Order ord = new Order();
-                ord.Show();
-
+                txtLogin.Text = reader["Id"].ToString();
+                //txtPassword.Text = reader["surname"].ToString();
+                Order order = new Order();
+                order.Show();
             }
             else
-            {
-                MessageBox.Show("Username or Password invalid, Please try again");
-                txtLogin.Clear();
-                txtPassword.Clear();
-            }
-            conn.Close();
+
+                MessageBox.Show("No record found");
+
+
+            connect.Close();
+
         }
 
         private void Employee()
         {
-            SqlConnection conn = new SqlConnection("Data Source=DESKTOP-EM51E9U;Initial Catalog=PacificGuesthouseDb;Integrated Security=True");
-            conn.Open();
+            string ConnectionString = "Data Source=DESKTOP-EM51E9U;Initial Catalog=PacificGuesthouseDb;Integrated Security=True";
 
-            SqlCommand command;
-            SqlDataReader dr;
-
-            string sql, output = "";
-
-            sql = "SELECT employeeId, shifts from employeeTb";
-            command = new SqlCommand(sql, conn);
-            dr = command.ExecuteReader();
-
-            while(dr.Read())
-            {
-                output = output + dr.GetValue(1) + "-" + dr.GetValue(7);
-
-                if(dr.GetString(1) != txtLogin.Text || dr.GetString(7)!= txtPassword.Text)
-                {
-                    MessageBox.Show("Username and password is incorrect, Please try again");
-                }
-                
-
-            }
-            dr.Close();
-            conn.Close();
-
-            MessageBox.Show("Successful Login");
-
-            MaintainClient client = new MaintainClient();
-            client.Show();
-
-        }
-
-        private void Manager()
-        {
-            SqlConnection connect = new SqlConnection("Data Source=DESKTOP-EM51E9U;Initial Catalog=PacificGuesthouseDb;Integrated Security=True");
-            SqlDataAdapter adapt;
-            SqlCommand command;
-
+            SqlConnection connect = new SqlConnection(ConnectionString);
             connect.Open();
 
-            command = new SqlCommand("SELECT * FROM ManagerTb WHERE surname = '"+txtLogin.Text+"' AND managerId = "+txtPassword,connect);
-            adapt = new SqlDataAdapter(command);
-            DataSet ds = new DataSet();
-            adapt.Fill(ds, "ManagerTb");
+            string Employee = txtLogin.Text;
+            //string Surname = txtPassword.Text;
 
-            int i = ds.Tables[0].Rows.Count;
 
-            if(i == 1)
+            string Query = "SELECT * FROM EmployeeTb WHERE employeeId = " + txtLogin.Text;
+
+            SqlCommand com = new SqlCommand(Query, connect);
+            var reader = com.ExecuteReader();
+
+            if (reader.Read())
             {
-                MaintainEmployeeShifts employee = new MaintainEmployeeShifts();
-                employee.Show();
-                this.Hide();
-
+                txtLogin.Text = reader["employeeId"].ToString();
+                //txtPassword.Text = reader["surname"].ToString();
+                MaintainClient maintain = new MaintainClient();
+                maintain.Show();
             }
+            else
+
+                MessageBox.Show("No record found");
+
 
             connect.Close();
-        }
-
-        private void Login_Load(object sender, EventArgs e)
-        {
 
         }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
+        private void Manager()
         {
+            string ConnectionString = "Data Source=DESKTOP-EM51E9U;Initial Catalog=PacificGuesthouseDb;Integrated Security=True";
 
-        }
+            SqlConnection connect = new SqlConnection(ConnectionString);
+            connect.Open();
 
-        private void lblSignUp_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            SignUp signUp = new SignUp();
-            signUp.Show();
+            string Manager = txtLogin.Text;
+            //string Surname = txtPassword.Text;
+
+
+            string Query = "SELECT * FROM ManagerTb WHERE managerId = " + txtLogin.Text;
+
+            SqlCommand com = new SqlCommand(Query, connect);
+            var reader = com.ExecuteReader();
+
+            if (reader.Read())
+            {
+                txtLogin.Text = reader["managerId"].ToString();
+                //txtPassword.Text = reader["surname"].ToString();
+                MaintainEmployeeShifts maintain = new MaintainEmployeeShifts();
+                maintain.Show();
+            }
+            else
+
+                MessageBox.Show("No record found");
+
+
+            connect.Close();
+
         }
     }
 }
