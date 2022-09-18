@@ -87,23 +87,23 @@ namespace PG_System
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            conn = new SqlConnection(connectionString);
-            conn.Open();
-            SqlCommand cmd = new SqlCommand("UPDATE ClientCredTb SET Id=@Id,surname=@surname,name=@name,title=@title,email=@email",
-                conn);
-            cmd.Parameters.Add("Id", txtId.Text);
-            cmd.Parameters.Add("@name", txtName.Text);
-            cmd.Parameters.Add("@title", txtTitle.Text);
-            cmd.Parameters.Add("@surname", txtSurname.Text);
-            cmd.Parameters.Add("@email", txtEmail.Text);
-            cmd.ExecuteNonQuery();
+            string ConnectionString = "";
 
-            conn.Close();
+            SqlConnection connect = new SqlConnection(ConnectionString);
 
-            MessageBox.Show("Client record updated");
+            connect.Open();
 
-            loadAll();
+            string Name = txtName.Text;
+            string Surname = txtSurname.Text;
+            string Title = txtTitle.Text;
+            string email = txtEmail.Text;
 
+            string Query = "UPDATE ClientCredTb SET name = '"+Name+"', surname = '"+Surname+"', title = '"+Title+"', email = '"+email;
+
+            SqlCommand com = new SqlCommand(Query, connect);
+            com.ExecuteNonQuery();
+
+            connect.Close();
             
 
         }
@@ -139,6 +139,53 @@ namespace PG_System
 
         private void label1_Click(object sender, EventArgs e)
         {
+            conn = new SqlConnection(connectionString);
+            conn.Open();
+            SqlCommand cmd = new SqlCommand("UPDATE ClientCredTb SET Id=@Id,surname=@surname,name=@name,title=@title,email=@email",
+                conn);
+            cmd.Parameters.AddWithValue("Id", txtId.Text);
+            cmd.Parameters.AddWithValue("@name", txtName.Text);
+            cmd.Parameters.AddWithValue("@title", txtTitle.Text);
+            cmd.Parameters.AddWithValue("@surname", txtSurname.Text);
+            cmd.Parameters.AddWithValue("@email", txtEmail.Text);
+            cmd.ExecuteNonQuery();
+
+            conn.Close();
+
+            MessageBox.Show("Client record updated");
+
+            loadAll();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string ConnectionString = "Data Source=DESKTOP-EM51E9U;Initial Catalog=PacificGuesthouseDb;Integrated Security=True";
+
+            SqlConnection connect = new SqlConnection(ConnectionString);
+
+            connect.Open();
+
+            string Name = txtName.Text;
+            string Surname = txtSurname.Text;
+            string Title = txtTitle.Text;
+            string email = txtEmail.Text;
+
+            string Query = "SELECT * FROM ClientCredTb WHERE Id = "+txtId.Text;
+
+            SqlCommand com = new SqlCommand(Query, connect);
+            var reader = com.ExecuteReader();
+
+            if (reader.Read())
+            {
+                txtName.Text = reader["name"].ToString();
+                txtSurname.Text = reader["surname"].ToString();
+                txtTitle.Text = reader["title"].ToString();
+                txtEmail.Text = reader["email"].ToString();
+            }
+            else
+                MessageBox.Show("No record found");
+
+            connect.Close();
 
         }
     }
