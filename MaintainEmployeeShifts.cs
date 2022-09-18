@@ -96,10 +96,10 @@ namespace PG_System
             connect.Open();
 
 
-            string Query = "UPDATE EmployeeTb SET shift = @shift WHERE employeeId = @employeeId";
+            string Query = "UPDATE EmployeeTb SET shifts = @shifts WHERE employeeId = @employeeId";
 
             SqlCommand com = new SqlCommand(Query, connect);
-            com.Parameters.AddWithValue("@shift", txtShift.Text);
+            com.Parameters.AddWithValue("@shifts", txtShift.Text);
             com.Parameters.AddWithValue("@employeeId", txtId.Text);
 
 
@@ -121,7 +121,7 @@ namespace PG_System
             con = new SqlConnection(connectionString);
             con.Open();
 
-            string sql = "DELETE employeeId WHERE employeeId=@employeeId";
+            string sql = "DELETE EmployeeTb WHERE employeeId=@employeeId";
             SqlCommand com = new SqlCommand(sql, con);
 
             com.Parameters.AddWithValue("employeeId", txtId.Text);
@@ -158,16 +158,21 @@ namespace PG_System
 
             if (reader.Read())
             {
-                txtId.Text = reader["employeeId"].ToString();
+                //txtId.Text = reader["employeeId"].ToString();
                 txtName.Text = reader["name"].ToString();
                 txtSurname.Text = reader["surname"].ToString();
                 txtOrderReference.Text = reader["orderReference"].ToString();
-                txtShift.Text = reader["shift"].ToString();
+                txtShift.Text = reader["shifts"].ToString();
             }
             else
                 MessageBox.Show("No record found");
 
             connect.Close();
+        }
+
+        private void MaintainEmployeeShifts_Load(object sender, EventArgs e)
+        {
+            loadAll();
         }
     }
 }

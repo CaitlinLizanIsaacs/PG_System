@@ -243,6 +243,7 @@
             this.Controls.Add(this.label1);
             this.Name = "MaintainEmployeeShifts";
             this.Text = "MaintainEmployeeShifts";
+            this.Load += new System.EventHandler(this.MaintainEmployeeShifts_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
