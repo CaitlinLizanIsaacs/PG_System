@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.Sql;
 using System.Data.SqlClient;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ProgressBar;
 
 
 namespace PG_System
@@ -30,27 +31,35 @@ namespace PG_System
         {
             try
             {
-                Pay payment = new Pay();
-                payment.Show();
+               
+                conn = new SqlConnection("Data Source=DESKTOP-EM51E9U;Initial Catalog=PacificGuesthouseDb;Integrated Security=True");
 
-                conn = new SqlConnection(@"Data Source=DESKTOP-EM51E9U;Initial Catalog=PacificGuesthouseDb;Integrated Security=True");
                 conn.Open();
-                cmd = new SqlCommand("INSERT INTO OrderTb (check-InDate,check-outDate,TotalCost,numberOfRooms,numberOfAdults,numberOfChildren) VALUES (@check-InDate,@check-outDate,@TotalCost,@numberOfRooms,@numberOfAdults,@numberOfChildren)",
+                //cmd.Connection = conn;
+                cmd.CommandType = CommandType.Text;
+
+                cmd = new SqlCommand("INSERT INTO OrderTb VALUES('"+txtOrderRef.Text+"','"+ this.dateTimePicker1.Value.ToString("dd/MM/yyyy HH:mm:ss") +"','"+ this.dateTimePicker1.Value.ToString("dd/MM/yyyy HH:mm:ss") +"', '"+txtAdults.Text+"', '"+txtKids+"', '"+txtRooms.Text+"')",
                     conn);
-                cmd.Parameters.AddWithValue("@check-InDate", monthCalendarCheckIn.SelectionRange.ToString());
-                cmd.Parameters.AddWithValue("@check-outDate", monthCalendarCheckOut.SelectionRange.ToString());
+
+
+
+                /*cmd.Parameters.AddWithValue("@check-InDate", this.dateTimePicker1.Value.ToString("dd/MM/yyyy HH:mm:ss"));
+                cmd.Parameters.AddWithValue("@check-outDate", this.dateTimePicker2.Value.ToString("dd/MM/yyyy HH:mm:ss"));
                 cmd.Parameters.AddWithValue("@TotalCost", lblTotal.Text);
                 cmd.Parameters.AddWithValue("@numberOfRooms", txtRooms.Text);
                 cmd.Parameters.AddWithValue("@numberOfAdults", txtAdults.Text);
-                cmd.Parameters.AddWithValue("@numberOfChildren", txtKids.Text);
+                cmd.Parameters.AddWithValue("@numberOfChildren", txtKids.Text);*/
                 cmd.ExecuteNonQuery();
 
                 conn.Close();
+                Pay payment = new Pay();
+                payment.Show();
+                //check - InDate,check - outDate,TotalCost,numberOfRooms,numberOfAdults,numberOfChildren) VALUES(@check - InDate, @check - outDate, @TotalCost, @numberOfRooms, @numberOfAdults, @numberOfChildren)",
+                    //conn);
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-                
             }
 
         }

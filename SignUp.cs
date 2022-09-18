@@ -27,9 +27,9 @@ namespace PG_System
 
             conn = new SqlConnection(connectionString);
             conn.Open();
-            cmd = new SqlCommand("INSERT INTO ClientCredTb (surname,name,title,email) VALUES (@surname,@name,@title,@email)",
+            cmd = new SqlCommand("INSERT INTO ClientCredTb (Id,surname,name,title,email) VALUES (@Id, @surname,@name,@title,@email)",
                 conn);
-            //cmd.Parameters.AddWithValue("@Id", txtId.Text);
+            cmd.Parameters.AddWithValue("@Id", txtId.Text);
             cmd.Parameters.AddWithValue("@name", txtName.Text);
             cmd.Parameters.AddWithValue("@title", txtTitle.Text);
             cmd.Parameters.AddWithValue("@surname", txtSurname.Text);
@@ -38,7 +38,10 @@ namespace PG_System
 
             conn.Close();
 
-            MessageBox.Show("Client record inserted");
+            MessageBox.Show("Succesfully signed up");
+
+            Login logback = new Login();
+            logback.Show();
         }
     }
 }

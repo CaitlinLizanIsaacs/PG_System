@@ -32,13 +32,18 @@ namespace PG_System
 
                 conn = new SqlConnection(@"Data Source=DESKTOP-EM51E9U;Initial Catalog=PacificGuesthouseDb;Integrated Security=True");
                 conn.Open();
-                cmd = new SqlCommand("INSERT INTO PayTb (PaymentDate,FullAmount) VALUES (@PaymentDate,@FullAmount)",
+                cmd = new SqlCommand("INSERT INTO paymentTb (paymentId, paymentDate,totalCost, orderRef) VALUES (@payemntId,@paymentDate,@totalCost, @orderRef)",
                     conn);
-                cmd.Parameters.AddWithValue("@check-InDate", monthCalendar1.SelectionStart.ToString());
-                cmd.Parameters.AddWithValue("@numberOfChildren", textBox1.Text);
+                cmd.Parameters.AddWithValue("@paymentId", txtPayment.Text.ToString());
+                cmd.Parameters.AddWithValue("@orderRef",txtOrder.Text.ToString());
+                cmd.Parameters.AddWithValue("@paymentDate", dateTimePicker1.Value.ToString());
+                cmd.Parameters.AddWithValue("@totalCost", textBox1.Text.ToString());
                 cmd.ExecuteNonQuery();
 
                 conn.Close();
+
+                BookingSummary bookingReceipt = new BookingSummary();
+                bookingReceipt.Show();
             }
             catch(Exception ex)
             {

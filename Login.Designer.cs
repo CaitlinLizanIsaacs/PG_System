@@ -89,6 +89,7 @@
             this.txtPassword.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPassword.Location = new System.Drawing.Point(343, 124);
             this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(100, 26);
             this.txtPassword.TabIndex = 41;
             // 
@@ -113,6 +114,7 @@
             this.lblSignUp.TabIndex = 43;
             this.lblSignUp.TabStop = true;
             this.lblSignUp.Text = "Click here to sign up and enjoy your stay at the Pacific Guesthouse";
+            this.lblSignUp.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblSignUp_LinkClicked);
             // 
             // label3
             // 
