@@ -43,14 +43,14 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.monthCalendarCheckin = new System.Windows.Forms.MonthCalendar();
-            this.monthCalendarCheckOut = new System.Windows.Forms.MonthCalendar();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.txtNumberOfAdults = new System.Windows.Forms.TextBox();
             this.txtNumberOfKids = new System.Windows.Forms.TextBox();
             this.txtNumberOfRooms = new System.Windows.Forms.TextBox();
+            this.dateTimePickerIn = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePickerOut = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -155,7 +155,7 @@
             // txtTotalCost
             // 
             this.txtTotalCost.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTotalCost.Location = new System.Drawing.Point(688, 329);
+            this.txtTotalCost.Location = new System.Drawing.Point(688, 204);
             this.txtTotalCost.Name = "txtTotalCost";
             this.txtTotalCost.Size = new System.Drawing.Size(100, 26);
             this.txtTotalCost.TabIndex = 33;
@@ -164,7 +164,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(588, 339);
+            this.label6.Location = new System.Drawing.Point(588, 204);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(76, 20);
             this.label6.TabIndex = 32;
@@ -184,7 +184,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(902, 132);
+            this.label4.Location = new System.Drawing.Point(556, 169);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(110, 20);
             this.label4.TabIndex = 30;
@@ -200,23 +200,11 @@
             this.label3.TabIndex = 29;
             this.label3.Text = "Surname: ";
             // 
-            // monthCalendarCheckin
-            // 
-            this.monthCalendarCheckin.Location = new System.Drawing.Point(663, 132);
-            this.monthCalendarCheckin.Name = "monthCalendarCheckin";
-            this.monthCalendarCheckin.TabIndex = 40;
-            // 
-            // monthCalendarCheckOut
-            // 
-            this.monthCalendarCheckOut.Location = new System.Drawing.Point(1005, 132);
-            this.monthCalendarCheckOut.Name = "monthCalendarCheckOut";
-            this.monthCalendarCheckOut.TabIndex = 41;
-            // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(543, 457);
+            this.label8.Location = new System.Drawing.Point(556, 344);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(121, 20);
             this.label8.TabIndex = 42;
@@ -226,7 +214,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(556, 420);
+            this.label9.Location = new System.Drawing.Point(558, 295);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(108, 20);
             this.label9.TabIndex = 43;
@@ -236,7 +224,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(547, 379);
+            this.label10.Location = new System.Drawing.Point(548, 247);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(118, 20);
             this.label10.TabIndex = 44;
@@ -245,7 +233,7 @@
             // txtNumberOfAdults
             // 
             this.txtNumberOfAdults.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNumberOfAdults.Location = new System.Drawing.Point(688, 369);
+            this.txtNumberOfAdults.Location = new System.Drawing.Point(688, 241);
             this.txtNumberOfAdults.Name = "txtNumberOfAdults";
             this.txtNumberOfAdults.Size = new System.Drawing.Size(100, 26);
             this.txtNumberOfAdults.TabIndex = 45;
@@ -253,7 +241,7 @@
             // txtNumberOfKids
             // 
             this.txtNumberOfKids.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNumberOfKids.Location = new System.Drawing.Point(688, 414);
+            this.txtNumberOfKids.Location = new System.Drawing.Point(688, 289);
             this.txtNumberOfKids.Name = "txtNumberOfKids";
             this.txtNumberOfKids.Size = new System.Drawing.Size(100, 26);
             this.txtNumberOfKids.TabIndex = 46;
@@ -261,24 +249,40 @@
             // txtNumberOfRooms
             // 
             this.txtNumberOfRooms.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNumberOfRooms.Location = new System.Drawing.Point(688, 446);
+            this.txtNumberOfRooms.Location = new System.Drawing.Point(688, 338);
             this.txtNumberOfRooms.Name = "txtNumberOfRooms";
             this.txtNumberOfRooms.Size = new System.Drawing.Size(100, 26);
             this.txtNumberOfRooms.TabIndex = 47;
+            // 
+            // dateTimePickerIn
+            // 
+            this.dateTimePickerIn.CalendarFont = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePickerIn.Location = new System.Drawing.Point(688, 132);
+            this.dateTimePickerIn.Name = "dateTimePickerIn";
+            this.dateTimePickerIn.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePickerIn.TabIndex = 48;
+            // 
+            // dateTimePickerOut
+            // 
+            this.dateTimePickerOut.CalendarFont = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePickerOut.Location = new System.Drawing.Point(688, 169);
+            this.dateTimePickerOut.Name = "dateTimePickerOut";
+            this.dateTimePickerOut.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePickerOut.TabIndex = 49;
             // 
             // MaintainHotelBookings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1241, 579);
+            this.Controls.Add(this.dateTimePickerOut);
+            this.Controls.Add(this.dateTimePickerIn);
             this.Controls.Add(this.txtNumberOfRooms);
             this.Controls.Add(this.txtNumberOfKids);
             this.Controls.Add(this.txtNumberOfAdults);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.monthCalendarCheckOut);
-            this.Controls.Add(this.monthCalendarCheckin);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.txtOrderReference);
             this.Controls.Add(this.label7);
@@ -320,13 +324,13 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.MonthCalendar monthCalendarCheckin;
-        private System.Windows.Forms.MonthCalendar monthCalendarCheckOut;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txtNumberOfAdults;
         private System.Windows.Forms.TextBox txtNumberOfKids;
         private System.Windows.Forms.TextBox txtNumberOfRooms;
+        private System.Windows.Forms.DateTimePicker dateTimePickerIn;
+        private System.Windows.Forms.DateTimePicker dateTimePickerOut;
     }
 }

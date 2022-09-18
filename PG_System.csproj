@@ -52,6 +52,12 @@
     <Compile Include="BookingSummary.Designer.cs">
       <DependentUpon>BookingSummary.cs</DependentUpon>
     </Compile>
+    <Compile Include="Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
     <Compile Include="MaintainClient.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -96,8 +102,17 @@
     <Compile Include="RequestReports.Designer.cs">
       <DependentUpon>RequestReports.cs</DependentUpon>
     </Compile>
+    <Compile Include="SignUp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SignUp.Designer.cs">
+      <DependentUpon>SignUp.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="BookingSummary.resx">
       <DependentUpon>BookingSummary.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MaintainClient.resx">
       <DependentUpon>MaintainClient.cs</DependentUpon>
@@ -128,6 +143,9 @@
     </Compile>
     <EmbeddedResource Include="RequestReports.resx">
       <DependentUpon>RequestReports.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SignUp.resx">
+      <DependentUpon>SignUp.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
