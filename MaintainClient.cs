@@ -12,11 +12,7 @@ using System.Windows.Forms;
 namespace PG_System
 {
     public partial class MaintainClient : Form
-    {
-        SqlCommand cmd;
-        SqlConnection conn;
-        SqlDataAdapter adapt;
-        string connectionString = @"Data Source=DESKTOP-EM51E9U;Initial Catalog=PacificGuesthouseDb;Integrated Security=True";
+    { 
 
         public MaintainClient()
         {
@@ -25,6 +21,10 @@ namespace PG_System
 
         private void btnInsert_Click(object sender, EventArgs e)
         {
+            SqlCommand cmd;
+            SqlConnection conn;
+            
+            string connectionString = @"Data Source=DESKTOP-EM51E9U;Initial Catalog=PacificGuesthouseDb;Integrated Security=True";
 
             conn = new SqlConnection(connectionString);
             conn.Open();
@@ -49,6 +49,10 @@ namespace PG_System
 
         private void loadAll()
         {
+            SqlCommand cmd;
+            
+            SqlDataAdapter adapt;
+            
             SqlConnection con;
             string connectionString = @"Data Source=DESKTOP-EM51E9U;Initial Catalog=PacificGuesthouseDb;Integrated Security=True";
 
@@ -87,7 +91,7 @@ namespace PG_System
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            string ConnectionString = "";
+            string ConnectionString = "Data Source=DESKTOP-EM51E9U;Initial Catalog=PacificGuesthouseDb;Integrated Security=True";
 
             SqlConnection connect = new SqlConnection(ConnectionString);
 
@@ -98,19 +102,24 @@ namespace PG_System
             string Title = txtTitle.Text;
             string email = txtEmail.Text;
 
-            string Query = "UPDATE ClientCredTb SET name = '"+Name+"', surname = '"+Surname+"', title = '"+Title+"', email = '"+email;
+            string Query = "UPDATE ClientCredTb SET email = @email WHERE Id = @Id";
 
             SqlCommand com = new SqlCommand(Query, connect);
+            com.Parameters.AddWithValue("@email",email);
+            com.Parameters.AddWithValue("@Id",txtId.Text);
+          
             com.ExecuteNonQuery();
 
             connect.Close();
-            
+
+            MessageBox.Show("Record has been updated");
+            loadAll();
 
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-
+           
             SqlConnection con;
             string connectionString = @"Data Source=DESKTOP-EM51E9U;Initial Catalog=PacificGuesthouseDb;Integrated Security=True";
 
@@ -120,13 +129,13 @@ namespace PG_System
             string sql = "DELETE ClientCredTb WHERE Id=@Id";
             SqlCommand com = new SqlCommand(sql, con);
 
-            cmd.Parameters.AddWithValue("Id", txtId.Text);
+            com.Parameters.AddWithValue("Id", txtId.Text);
             /*cmd.Parameters.AddWithValue("@name", txtName.Text);
             cmd.Parameters.AddWithValue("@title", txtTitle.Text);
             cmd.Parameters.AddWithValue("@surname", txtSurname.Text);
             cmd.Parameters.AddWithValue("@email", txtEmail.Text);*/
             //con.Open();
-            cmd.ExecuteNonQuery();
+            com.ExecuteNonQuery();
 
 
             con.Close();
@@ -139,7 +148,7 @@ namespace PG_System
 
         private void label1_Click(object sender, EventArgs e)
         {
-            conn = new SqlConnection(connectionString);
+            /*conn = new SqlConnection(connectionString);
             conn.Open();
             SqlCommand cmd = new SqlCommand("UPDATE ClientCredTb SET Id=@Id,surname=@surname,name=@name,title=@title,email=@email",
                 conn);
@@ -152,9 +161,11 @@ namespace PG_System
 
             conn.Close();
 
+            name = '"+Name+"', surname = '"+Surname+"', title = '"+Title+"', email = '"+email+ "'WHERE Id = '"+txtId.Text;
+
             MessageBox.Show("Client record updated");
 
-            loadAll();
+            loadAll();*/
         }
 
         private void button1_Click(object sender, EventArgs e)
