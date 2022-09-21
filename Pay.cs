@@ -32,12 +32,13 @@ namespace PG_System
 
                 conn = new SqlConnection(@"Data Source=DESKTOP-EM51E9U;Initial Catalog=PacificGuesthouseDb;Integrated Security=True");
                 conn.Open();
-                cmd = new SqlCommand("INSERT INTO paymentTb (paymentId, paymentDate,totalCost, orderRef) VALUES (@payemntId,@paymentDate,@totalCost, @orderRef)",
+                cmd = new SqlCommand("INSERT INTO paymentTb (paymentId, paymentDate,totalCost, orderRef) VALUES (@paymentId,@paymentDate,@totalCost, @orderRef)",
                     conn);
-                cmd.Parameters.AddWithValue("@paymentId", txtPayment.Text);
-                cmd.Parameters.AddWithValue("@orderRef",txtOrder.Text.ToString());
-                cmd.Parameters.AddWithValue("@paymentDate", dateTimePicker1.Text = DateTime.Now.ToLongDateString());
-                cmd.Parameters.AddWithValue("@totalCost", textBox1.Text.ToString());
+                cmd.Parameters.Clear();
+                cmd.Parameters.Add("@paymentId", txtPayment.Text + DBNull.Value);
+                cmd.Parameters.Add("@orderRef",txtOrder.Text.ToString());
+                cmd.Parameters.Add("@paymentDate", SqlDbType.DateTime).Value = dateTimePicker1.Value.ToString("yyyy-MM-ddTHH:mm:ss");
+                cmd.Parameters.Add("@totalCost", textBox1.Text.ToString());
                 cmd.ExecuteNonQuery();
 
                 conn.Close();
