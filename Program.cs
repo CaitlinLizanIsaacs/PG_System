@@ -16,7 +16,7 @@ namespace PG_System
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Pay());
+            Application.Run(new Order());
         }
     }
 }

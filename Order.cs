@@ -29,47 +29,31 @@ namespace PG_System
 
         private void btnPay_Click(object sender, EventArgs e)
         {
-            
-           
-               
-                conn = new SqlConnection("Data Source=DESKTOP-EM51E9U;Initial Catalog=PacificGuesthouseDb;Integrated Security=True");
 
 
-                cmd = new SqlCommand("INSERT INTO OrderTb (orderRef, checkIn,checkOut,numberOfAdults,numberOfChildren,numberOfRooms)VALUES('"+txtOrderRef.Text+"','"+ this.dateTimePicker1.Value.Date +"','"+ this.dateTimePicker1.Value.Date +"', '"+txtAdults.Text+"', '"+txtKids+"', '"+txtRooms.Text+"')",
-                    conn);
+            SqlCommand cmd;
+            SqlConnection conn;
 
-                SqlDataReader myReader;
+            string connectionString = @"Data Source=DESKTOP-EM51E9U;Initial Catalog=PacificGuesthouseDb;Integrated Security=True";
 
+            conn = new SqlConnection(connectionString);
+            conn.Open();
+            cmd = new SqlCommand("INSERT INTO OrderTb (orderRef,surname,checkIn,checkOut,totalCost,numberOfRooms,numberOfAdults,numberOfChildren) VALUES (@orderRef,@surname,@checkIn,@checkOut,@totalCost,@numberOfRooms,@numberOfAdults,@numberOfChildren)",
+                conn);
+            cmd.Parameters.AddWithValue("@orderRef", txtOrderRef.Text + DBNull.Value);
+            cmd.Parameters.AddWithValue("@surname", txtSurname.Text);
+            cmd.Parameters.AddWithValue("@checkIn", SqlDbType.DateTime).Value = dateTimePicker1.Value.ToString("yyyy-MM-ddTHH:mm:ss");
+            cmd.Parameters.AddWithValue("@checkOut", SqlDbType.DateTime).Value = dateTimePicker2.Value.ToString("yyyy-MM-ddTHH:mm:ss");
+            cmd.Parameters.AddWithValue("@totalCost", txtTotalCost.Text);
+            cmd.Parameters.AddWithValue("@numberOfAdults", txtAdults.Text);
+            cmd.Parameters.AddWithValue("@numberOfChildren", txtKids.Text);
+            cmd.Parameters.AddWithValue("@numberOfRooms", txtRooms.Text); 
+            cmd.ExecuteNonQuery();
 
-            try
-            {
-                conn.Open();
-                myReader = cmd.ExecuteReader();
-                MessageBox.Show("Please move to pay");
-                while (myReader.Read())
-                {
+            conn.Close();
 
-                }
-
-                cmd.ExecuteNonQuery();
-
-                conn.Close();
-                Pay payment = new Pay();
-                payment.Show();
-
-            }
-                /*cmd.ExecuteNonQuery();
-
-                conn.Close();
-                Pay payment = new Pay();
-                payment.Show();*/
-                
-            
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-
+            Pay pay = new Pay();
+            pay.Show();
         }
     }
 }

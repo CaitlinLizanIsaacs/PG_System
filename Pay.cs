@@ -43,6 +43,8 @@ namespace PG_System
 
                 conn.Close();
 
+                MessageBox.Show("Successfully Payed!");
+
                 BookingSummary bookingReceipt = new BookingSummary();
                 bookingReceipt.Show();
             }

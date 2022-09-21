@@ -21,7 +21,7 @@ namespace PG_System
 
         private void MaintainHotelBookings_Load(object sender, EventArgs e)
         {
-
+            loadAll();
         }
 
         private void btnInsert_Click(object sender, EventArgs e)
@@ -33,12 +33,12 @@ namespace PG_System
 
             conn = new SqlConnection(connectionString);
             conn.Open();
-            cmd = new SqlCommand("INSERT INTO OrderTb (orderRed,surname,check-InDate,check-OutDate,totalCost,numberOfRooms,numberOfAdults,numberOfChildren) VALUES (@orderRed,@surname,@check-InDate,@check-OutDate,@totalCost,@numberOfRooms,@numberOfAdults,@numberOfChildren)",
+            cmd = new SqlCommand("INSERT INTO OrderTb (orderRef,surname,checkIn,checkOut,totalCost,numberOfRooms,numberOfAdults,numberOfChildren) VALUES (@orderRef,@surname,@checkIn,@checkOut,@totalCost,@numberOfRooms,@numberOfAdults,@numberOfChildren)",
                 conn);
-            cmd.Parameters.AddWithValue("@orderRef", txtOrderReference.Text);
+            cmd.Parameters.AddWithValue("@orderRef", txtOrderReference.Text + DBNull.Value);
             cmd.Parameters.AddWithValue("@surname", txtSurname.Text);
-            cmd.Parameters.AddWithValue("@check-InDate", dateTimePickerIn.Value.ToString());
-            cmd.Parameters.AddWithValue("@check-OutDate", dateTimePickerOut.Value.ToString());
+            cmd.Parameters.AddWithValue("@checkIn", SqlDbType.DateTime).Value = dateTimePickerIn.Value.ToString("yyyy-MM-ddTHH:mm:ss");
+            cmd.Parameters.AddWithValue("@checkOut", SqlDbType.DateTime).Value = dateTimePickerOut.Value.ToString("yyyy-MM-ddTHH:mm:ss");
             cmd.Parameters.AddWithValue("@totalCost", txtTotalCost.Text);
             cmd.Parameters.AddWithValue("@numberOfAdults", txtNumberOfAdults.Text);
             cmd.Parameters.AddWithValue("@numberOfChildren", txtNumberOfKids.Text);
@@ -47,7 +47,7 @@ namespace PG_System
 
             conn.Close();
 
-            MessageBox.Show("Client record inserted");
+            MessageBox.Show("Order record inserted");
 
             loadAll();
 
@@ -70,14 +70,14 @@ namespace PG_System
             adapt = new SqlDataAdapter();
             DataSet ds = new DataSet();
 
-            string sql = "SELECT * FROM ClientCredTb";
+            string sql = "SELECT * FROM OrderTb";
 
             cmd = new SqlCommand(sql, con);
             adapt.SelectCommand = cmd;
-            adapt.Fill(ds, "ClientCredTb");
+            adapt.Fill(ds, "OrderTb");
 
             dataGridView1.DataSource = ds;
-            dataGridView1.DataMember = "ClientCredTb";
+            dataGridView1.DataMember = "OrderTb";
 
             con.Close();
         }
@@ -143,6 +143,36 @@ namespace PG_System
         private void label7_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string ConnectionString = "Data Source=DESKTOP-EM51E9U;Initial Catalog=PacificGuesthouseDb;Integrated Security=True";
+
+            SqlConnection connect = new SqlConnection(ConnectionString);
+
+            connect.Open();
+
+            string Name = txtOrderReference.Text;
+
+            string Query = "SELECT * FROM OrderTb WHERE orderRef = " + txtOrderReference.Text;
+
+            SqlCommand com = new SqlCommand(Query, connect);
+            var reader = com.ExecuteReader();
+
+            if (reader.Read())
+            {
+                txtOrderReference.Text = reader["orderRef"].ToString();
+                txtSurname.Text = reader["surname"].ToString();
+                txtTotalCost.Text = reader["totalCost"].ToString();
+                txtNumberOfKids.Text = reader["numberOfCHildren"].ToString();
+                txtNumberOfAdults.Text = reader["numberOfAdults"].ToString();
+                txtNumberOfRooms.Text = reader["numberOfRooms"].ToString();
+            }
+            else
+                MessageBox.Show("No record found");
+
+            connect.Close();
         }
     }
 }
