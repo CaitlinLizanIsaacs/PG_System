@@ -249,6 +249,7 @@
             // 
             this.txtTotalCost.Location = new System.Drawing.Point(239, 332);
             this.txtTotalCost.Name = "txtTotalCost";
+            this.txtTotalCost.ReadOnly = true;
             this.txtTotalCost.Size = new System.Drawing.Size(227, 20);
             this.txtTotalCost.TabIndex = 23;
             // 
