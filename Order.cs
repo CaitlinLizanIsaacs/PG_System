@@ -55,7 +55,7 @@ namespace PG_System
             Pay pay = new Pay();
             pay.Show();
 
-            int numberOfadults = 500;
+            /*int numberOfadults = 500;
             int numberOfkids = 200;
             int numberOfRooms = 300;
             int TotalCost = numberOfadults + numberOfkids + numberOfRooms;
@@ -74,7 +74,7 @@ namespace PG_System
             else
             { 
                 MessageBox.Show("Please try again"); 
-            }
+            }*/
 
             
 
