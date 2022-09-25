@@ -25,7 +25,7 @@ namespace PG_System
         SqlConnection conn;
         SqlDataAdapter adapt;
 
-        
+       
 
         private void btnPay_Click(object sender, EventArgs e)
         {
@@ -54,27 +54,6 @@ namespace PG_System
 
             Pay pay = new Pay();
             pay.Show();
-
-            /*int numberOfadults = 500;
-            int numberOfkids = 200;
-            int numberOfRooms = 300;
-            int TotalCost = numberOfadults + numberOfkids + numberOfRooms;
-
-            if (txtAdults.Text != null & txtKids.Text != null & txtRooms.Text != null)
-            {
-                numberOfadults = Convert.ToInt32(txtAdults.Text);
-                numberOfkids = Convert.ToInt32(txtKids.Text);
-                numberOfRooms = Convert.ToInt32(txtRooms.Text);
-
-                
-                txtTotalCost.Text = TotalCost.ToString();
-
-
-            }
-            else
-            { 
-                MessageBox.Show("Please try again"); 
-            }*/
 
             
 

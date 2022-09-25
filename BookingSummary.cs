@@ -20,36 +20,99 @@ namespace PG_System
 
         private void btnLogout_Click(object sender, EventArgs e)
         {
+           Login logout = new Login();
+            logout.Show();
+        }
+
+        private void BookingReference()
+        {
+            SqlConnection conn = new SqlConnection(@"Data Source=DESKTOP-EM51E9U;Initial Catalog=PacificGuesthouseDb;Integrated Security=True");
+            conn.Open();
+
+            string query = "SELECT * FROM OrderTb ";
+            SqlCommand comm;
+            comm = new SqlCommand(query, conn);
+            SqlDataReader read = comm.ExecuteReader();
+
+            read.Read();
+            lblBR.Text = read["orderRef"].ToString();
+
+
 
         }
 
-        private void Balance()
+        private void PaymentRef()
         {
-            SqlCommand cmd;
+            SqlConnection conn = new SqlConnection(@"Data Source=DESKTOP-EM51E9U;Initial Catalog=PacificGuesthouseDb;Integrated Security=True");
+            conn.Open();
 
-            SqlDataAdapter adapt;
+            string query = "SELECT * FROM paymentTb ";
+            SqlCommand comm;
+            comm = new SqlCommand(query, conn);
+            SqlDataReader read = comm.ExecuteReader();
 
-            SqlConnection con;
-            string connectionString = @"Data Source=DESKTOP-EM51E9U;Initial Catalog=PacificGuesthouseDb;Integrated Security=True";
+            read.Read();
+            lblPR.Text = read["paymentId"].ToString();
 
-            con = new SqlConnection(connectionString);
+        }
 
-            con.Open();
+        private void EmailRetrieve()
+        {
+            SqlConnection conn = new SqlConnection(@"Data Source=DESKTOP-EM51E9U;Initial Catalog=PacificGuesthouseDb;Integrated Security=True");
+            conn.Open();
 
-            adapt = new SqlDataAdapter();
-            DataSet ds = new DataSet();
+            string query = "SELECT * FROM ClientCredTb ";
+            SqlCommand comm;
+            comm = new SqlCommand(query, conn);
+            SqlDataReader read = comm.ExecuteReader();
 
-            string sql = "SELECT totalCost FROM paymentTb";
+            read.Read();
+            lblEmail.Text = read["email"].ToString();
 
-            cmd = new SqlCommand(sql, con);
-            adapt.SelectCommand = cmd;
-            adapt.Fill(ds, "Order");
+        }
 
-           
+        private void NumberOfRoomsBooked()
+        {
+            SqlConnection conn = new SqlConnection(@"Data Source=DESKTOP-EM51E9U;Initial Catalog=PacificGuesthouseDb;Integrated Security=True");
+            conn.Open();
+
+            string query = "SELECT * FROM OrderTb ";
+            SqlCommand comm;
+            comm = new SqlCommand(query, conn);
+            SqlDataReader read = comm.ExecuteReader();
+
+            read.Read();
+            lblRoomsBooked.Text = read["numberOfRooms"].ToString();
+
+        }
+
+        private void TotalCost()
+        {
+            SqlConnection conn = new SqlConnection(@"Data Source=DESKTOP-EM51E9U;Initial Catalog=PacificGuesthouseDb;Integrated Security=True");
+            conn.Open();
+
+            string query = "SELECT * FROM paymentTb ";
+            SqlCommand comm;
+            comm = new SqlCommand(query, conn);
+            SqlDataReader read = comm.ExecuteReader();
+
+            read.Read();
+            lblBalance.Text = read["totalCost"].ToString();
+
+        }
+
+
+        private void BookingSummary_Load(object sender, EventArgs e)
+        {
+            BookingReference();
+            PaymentRef();
+            EmailRetrieve();
+            NumberOfRoomsBooked();
+            TotalCost();
 
 
 
-            con.Close();
+
         }
     }
 }

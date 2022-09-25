@@ -182,6 +182,7 @@
             this.Controls.Add(this.label1);
             this.Name = "BookingSummary";
             this.Text = "BookingSummary";
+            this.Load += new System.EventHandler(this.BookingSummary_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
