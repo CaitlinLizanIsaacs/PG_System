@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -40,6 +41,7 @@
             this.lblEmail = new System.Windows.Forms.Label();
             this.lblPR = new System.Windows.Forms.Label();
             this.btnLogout = new System.Windows.Forms.Button();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.SuspendLayout();
             // 
             // label1
@@ -163,6 +165,10 @@
             this.btnLogout.UseVisualStyleBackColor = true;
             this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
+            // toolTip1
+            // 
+            this.toolTip1.Popup += new System.Windows.Forms.PopupEventHandler(this.toolTip1_Popup);
+            // 
             // BookingSummary
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -202,5 +208,6 @@
         private System.Windows.Forms.Label lblEmail;
         private System.Windows.Forms.Label lblPR;
         private System.Windows.Forms.Button btnLogout;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

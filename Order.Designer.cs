@@ -145,6 +145,7 @@
             this.linkLabelHelp.TabIndex = 15;
             this.linkLabelHelp.TabStop = true;
             this.linkLabelHelp.Text = "Help!";
+            this.linkLabelHelp.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelHelp_LinkClicked);
             // 
             // dateTimePicker1
             // 

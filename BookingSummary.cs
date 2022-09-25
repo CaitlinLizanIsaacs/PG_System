@@ -37,6 +37,9 @@ namespace PG_System
             read.Read();
             lblBR.Text = read["orderRef"].ToString();
 
+            read.Close();
+            conn.Close();
+
 
 
         }
@@ -54,6 +57,9 @@ namespace PG_System
             read.Read();
             lblPR.Text = read["paymentId"].ToString();
 
+            read.Close();
+            conn.Close();
+
         }
 
         private void EmailRetrieve()
@@ -68,6 +74,9 @@ namespace PG_System
 
             read.Read();
             lblEmail.Text = read["email"].ToString();
+
+            read.Close();
+            conn.Close();
 
         }
 
@@ -84,6 +93,9 @@ namespace PG_System
             read.Read();
             lblRoomsBooked.Text = read["numberOfRooms"].ToString();
 
+            read.Close();
+            conn.Close();
+
         }
 
         private void TotalCost()
@@ -99,6 +111,9 @@ namespace PG_System
             read.Read();
             lblBalance.Text = read["totalCost"].ToString();
 
+            read.Close();
+            conn.Close();
+
         }
 
 
@@ -113,6 +128,11 @@ namespace PG_System
 
 
 
+        }
+
+        private void toolTip1_Popup(object sender, PopupEventArgs e)
+        {
+            
         }
     }
 }

@@ -59,5 +59,10 @@ namespace PG_System
 
             
         }
+
+        private void linkLabelHelp_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            MessageBox.Show("If you experience any problems with bookings please contact our office hotline on 011-249-5589, our customer care line on 0623569987 or email us on pgguesthouse@guesyhouse.co.za, we respond within the hour");
+        }
     }
 }
