@@ -56,39 +56,9 @@ namespace PG_System
             pay.Show();
 
             
+            
 
             
-        }
-
-        public void OrderView()
-        {
-            string ConnectionString = "Data Source=DESKTOP-EM51E9U;Initial Catalog=PacificGuesthouseDb;Integrated Security=True";
-
-            SqlConnection connect = new SqlConnection(ConnectionString);
-            connect.Open();
-
-
-            string Query = "SELECT * FROM OrderTb WHERE orderRef = @orderRef";
-
-            SqlCommand com = new SqlCommand(Query, connect);
-            var reader = com.ExecuteReader();
-
-            if (reader.Read())
-            {
-                txtLogin.Text = reader["employeeId"].ToString();
-                txtPassword.Text = reader["surname"].ToString();
-
-                MaintainClient client = new MaintainClient();
-                client.Show();
-            }
-            else
-
-                MessageBox.Show("No record found");
-
-
-            connect.Close();
-
-
         }
 
         private void linkLabelHelp_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

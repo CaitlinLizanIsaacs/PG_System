@@ -27,9 +27,7 @@ namespace PG_System
         {
             try
             {
-                BookingSummary bs = new BookingSummary();
-                bs.Show();
-
+               
                 conn = new SqlConnection(@"Data Source=DESKTOP-EM51E9U;Initial Catalog=PacificGuesthouseDb;Integrated Security=True");
                 conn.Open();
                 cmd = new SqlCommand("INSERT INTO paymentTb (paymentId, paymentDate,totalCost, orderRef) VALUES (@paymentId,@paymentDate,@totalCost, @orderRef)",
@@ -43,10 +41,9 @@ namespace PG_System
 
                 conn.Close();
 
-                MessageBox.Show("Successfully Payed!");
-
-                BookingSummary bookingReceipt = new BookingSummary();
-                bookingReceipt.Show();
+                MessageBox.Show("Successfully Payed!, Your Order details have been sent to your email address" );
+                BookingSummary book = new BookingSummary(txtPayment.Text, txtOrder.Text, textBox1.Text);
+                book.Show();
             }
             catch(Exception ex)
             {

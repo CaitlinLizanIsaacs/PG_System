@@ -8,14 +8,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using PG_System;
 
 namespace PG_System
 {
     public partial class BookingSummary : Form
     {
-        public BookingSummary()
+        public BookingSummary(string paymentRef, string bookingref, string totalCost)
         {
             InitializeComponent();
+            lblSurname.Text = paymentRef;
+            lblBR.Text = bookingref;
+            lblTotalCost.Text = totalCost;
+            
+
+
+            
+           
         }
 
         private void btnLogout_Click(object sender, EventArgs e)
@@ -55,7 +64,7 @@ namespace PG_System
             SqlDataReader read = comm.ExecuteReader();
 
             read.Read();
-            lblPR.Text = read["paymentId"].ToString();
+            lblSurname.Text = read["paymentId"].ToString();
 
             read.Close();
             conn.Close();
@@ -73,7 +82,7 @@ namespace PG_System
             SqlDataReader read = comm.ExecuteReader();
 
             read.Read();
-            lblEmail.Text = read["email"].ToString();
+            lblTotalCost.Text = read["email"].ToString();
 
             read.Close();
             conn.Close();
@@ -91,7 +100,7 @@ namespace PG_System
             SqlDataReader read = comm.ExecuteReader();
 
             read.Read();
-            lblRoomsBooked.Text = read["numberOfRooms"].ToString();
+            //lblRoomsBooked.Text = read["numberOfRooms"].ToString();
 
             read.Close();
             conn.Close();
@@ -109,7 +118,7 @@ namespace PG_System
             SqlDataReader read = comm.ExecuteReader();
 
             read.Read();
-            lblBalance.Text = read["totalCost"].ToString();
+            lblTotalCost.Text = read["totalCost"].ToString();
 
             read.Close();
             conn.Close();
@@ -119,11 +128,11 @@ namespace PG_System
 
         private void BookingSummary_Load(object sender, EventArgs e)
         {
-            BookingReference();
+            /*BookingReference();
             PaymentRef();
             EmailRetrieve();
             NumberOfRoomsBooked();
-            TotalCost();
+            TotalCost();*/
 
 
 
@@ -134,5 +143,7 @@ namespace PG_System
         {
             
         }
+
+        
     }
 }

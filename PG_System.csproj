@@ -109,6 +109,11 @@
     <Compile Include="Order.Designer.cs">
       <DependentUpon>Order.cs</DependentUpon>
     </Compile>
+    <Compile Include="PacificGuesthouseDbDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PacificGuesthouseDbDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Pay.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -163,13 +168,23 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="ReportGroup.rdlc" />
     <EmbeddedResource Include="RequestReports.resx">
       <DependentUpon>RequestReports.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SignUp.resx">
       <DependentUpon>SignUp.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="PacificGuesthouseDbDataSet.xsc">
+      <DependentUpon>PacificGuesthouseDbDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="PacificGuesthouseDbDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>PacificGuesthouseDbDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="PacificGuesthouseDbDataSet.xss">
+      <DependentUpon>PacificGuesthouseDbDataSet.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
