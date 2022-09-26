@@ -55,7 +55,8 @@ namespace PG_System
             Pay pay = new Pay();
             pay.Show();
 
-            
+            this.Hide();
+
             
 
             

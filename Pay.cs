@@ -44,6 +44,7 @@ namespace PG_System
                 MessageBox.Show("Successfully Payed!, Your Order details have been sent to your email address" );
                 BookingSummary book = new BookingSummary(txtPayment.Text, txtOrder.Text, textBox1.Text);
                 book.Show();
+                this.Hide();
             }
             catch(Exception ex)
             {
