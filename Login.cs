@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Reporting.Map.WebForms.BingMaps;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -21,30 +22,33 @@ namespace PG_System
         private void button1_Click(object sender, EventArgs e)
         {
             Client();
+            Employee();
+            Manager();
         }
 
         private void Client()
         {
+
             string ConnectionString = "Data Source=DESKTOP-EM51E9U;Initial Catalog=PacificGuesthouseDb;Integrated Security=True";
 
             SqlConnection connect = new SqlConnection(ConnectionString);
             connect.Open();
 
-            string Employee = txtLogin.Text;
-            //string Surname = txtPassword.Text;
 
-
-            string Query = "SELECT * FROM ClientCredTb WHERE Id = " + txtLogin.Text;
+            string Query = "SELECT * FROM ClientCredTb WHERE email = '" + txtLogin.Text + "' AND surname = '" + txtPassword.Text + "'";
 
             SqlCommand com = new SqlCommand(Query, connect);
             var reader = com.ExecuteReader();
 
             if (reader.Read())
             {
-                txtLogin.Text = reader["Id"].ToString();
-                //txtPassword.Text = reader["surname"].ToString();
-                Order order = new Order();
-                order.Show();
+                txtLogin.Text = reader["email"].ToString();
+                txtPassword.Text = reader["surname"].ToString();
+
+                Order ord = new Order();
+                ord.Show();
+                this.Hide();
+
             }
             else
 
@@ -62,11 +66,8 @@ namespace PG_System
             SqlConnection connect = new SqlConnection(ConnectionString);
             connect.Open();
 
-            string Employee = txtLogin.Text;
-            //string Surname = txtPassword.Text;
 
-
-            string Query = "SELECT * FROM EmployeeTb WHERE employeeId = " + txtLogin.Text;
+            string Query = "SELECT * FROM EmployeeTb WHERE employeeId = '" + txtLogin.Text + "' AND surname = '" + txtPassword.Text + "'";
 
             SqlCommand com = new SqlCommand(Query, connect);
             var reader = com.ExecuteReader();
@@ -74,9 +75,10 @@ namespace PG_System
             if (reader.Read())
             {
                 txtLogin.Text = reader["employeeId"].ToString();
-                //txtPassword.Text = reader["surname"].ToString();
-                MaintainClient maintain = new MaintainClient();
-                maintain.Show();
+                txtPassword.Text = reader["surname"].ToString();
+
+                MaintainClient client = new MaintainClient();
+                client.Show();
             }
             else
 
@@ -84,6 +86,8 @@ namespace PG_System
 
 
             connect.Close();
+
+
 
         }
         private void Manager()
@@ -93,11 +97,8 @@ namespace PG_System
             SqlConnection connect = new SqlConnection(ConnectionString);
             connect.Open();
 
-            string Manager = txtLogin.Text;
-            //string Surname = txtPassword.Text;
 
-
-            string Query = "SELECT * FROM ManagerTb WHERE managerId = " + txtLogin.Text;
+            string Query = "SELECT * FROM ManagerTb WHERE managerId = '" + txtLogin.Text+"' AND surname = '"+txtPassword.Text+"'";
 
             SqlCommand com = new SqlCommand(Query, connect);
             var reader = com.ExecuteReader();
@@ -105,7 +106,7 @@ namespace PG_System
             if (reader.Read())
             {
                 txtLogin.Text = reader["managerId"].ToString();
-                //txtPassword.Text = reader["surname"].ToString();
+                txtPassword.Text = reader["surname"].ToString();
                 MaintainEmployeeShifts maintain = new MaintainEmployeeShifts();
                 maintain.Show();
             }

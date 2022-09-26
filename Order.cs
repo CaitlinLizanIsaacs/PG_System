@@ -60,6 +60,37 @@ namespace PG_System
             
         }
 
+        public void OrderView()
+        {
+            string ConnectionString = "Data Source=DESKTOP-EM51E9U;Initial Catalog=PacificGuesthouseDb;Integrated Security=True";
+
+            SqlConnection connect = new SqlConnection(ConnectionString);
+            connect.Open();
+
+
+            string Query = "SELECT * FROM OrderTb WHERE orderRef = @orderRef";
+
+            SqlCommand com = new SqlCommand(Query, connect);
+            var reader = com.ExecuteReader();
+
+            if (reader.Read())
+            {
+                txtLogin.Text = reader["employeeId"].ToString();
+                txtPassword.Text = reader["surname"].ToString();
+
+                MaintainClient client = new MaintainClient();
+                client.Show();
+            }
+            else
+
+                MessageBox.Show("No record found");
+
+
+            connect.Close();
+
+
+        }
+
         private void linkLabelHelp_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             MessageBox.Show("If you experience any problems with bookings please contact our office hotline on 011-249-5589, our customer care line on 0623569987 or email us on pgguesthouse@guesyhouse.co.za, we respond within the hour");
