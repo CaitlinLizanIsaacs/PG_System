@@ -196,11 +196,11 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(565, 80);
+            this.label7.Location = new System.Drawing.Point(519, 80);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(28, 20);
+            this.label7.Size = new System.Drawing.Size(76, 20);
             this.label7.TabIndex = 26;
-            this.label7.Text = "Id: ";
+            this.label7.Text = "Password: ";
             // 
             // txtId
             // 

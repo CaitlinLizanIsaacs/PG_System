@@ -19,6 +19,7 @@ namespace PG_System
         public Order()
         {
             InitializeComponent();
+            //lblShow.Text = email;
         }
 
         SqlCommand cmd;
@@ -38,9 +39,9 @@ namespace PG_System
 
             conn = new SqlConnection(connectionString);
             conn.Open();
-            cmd = new SqlCommand("INSERT INTO OrderTb (orderRef,surname,checkIn,checkOut,totalCost,numberOfRooms,numberOfAdults,numberOfChildren) VALUES (@orderRef,@surname,@checkIn,@checkOut,@totalCost,@numberOfRooms,@numberOfAdults,@numberOfChildren)",
+            cmd = new SqlCommand("INSERT INTO OrderTb (surname,checkIn,checkOut,totalCost,numberOfRooms,numberOfAdults,numberOfChildren) VALUES (@surname,@checkIn,@checkOut,@totalCost,@numberOfRooms,@numberOfAdults,@numberOfChildren)",
                 conn);
-            cmd.Parameters.AddWithValue("@orderRef", txtOrderRef.Text + DBNull.Value);
+            
             cmd.Parameters.AddWithValue("@surname", txtSurname.Text);
             cmd.Parameters.AddWithValue("@checkIn", SqlDbType.DateTime).Value = dateTimePicker1.Value.ToString("yyyy-MM-ddTHH:mm:ss");
             cmd.Parameters.AddWithValue("@checkOut", SqlDbType.DateTime).Value = dateTimePicker2.Value.ToString("yyyy-MM-ddTHH:mm:ss");

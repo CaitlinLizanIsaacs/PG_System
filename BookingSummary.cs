@@ -14,10 +14,10 @@ namespace PG_System
 {
     public partial class BookingSummary : Form
     {
-        public BookingSummary(string paymentRef, string bookingref, string totalCost)
+        public BookingSummary(string paymentdate, string bookingref, string totalCost)
         {
             InitializeComponent();
-            lblSurname.Text = paymentRef;
+            label5.Text = paymentdate;
             lblBR.Text = bookingref;
             lblTotalCost.Text = totalCost;
         }

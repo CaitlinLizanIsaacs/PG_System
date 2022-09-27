@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace PG_System
 {
@@ -19,13 +20,6 @@ namespace PG_System
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            Client();
-            Employee();
-            Manager();
-        }
-
         private void Client()
         {
 
@@ -34,28 +28,40 @@ namespace PG_System
             SqlConnection connect = new SqlConnection(ConnectionString);
             connect.Open();
 
+            string username = txtLogin.Text;
+            string password = txtPassword.Text;
 
-            string Query = "SELECT * FROM ClientCredTb WHERE email = '" + txtLogin.Text + "' AND surname = '" + txtPassword.Text + "'";
+            DataTable table = new DataTable();
+
+            SqlDataAdapter adapt = new SqlDataAdapter();
+
+            string Query = "SELECT * FROM ClientCredTb WHERE email= @email AND password = @password";
 
             SqlCommand com = new SqlCommand(Query, connect);
-            var reader = com.ExecuteReader();
 
-            if (reader.Read())
+            com.Parameters.Add("@email",SqlDbType.VarChar).Value = username;
+            com.Parameters.Add("@password", SqlDbType.VarChar).Value = password;
+
+            adapt.SelectCommand = com;
+
+            adapt.Fill(table);
+
+            if(table.Rows.Count > 0)
             {
-                txtLogin.Text = reader["email"].ToString();
-                txtPassword.Text = reader["surname"].ToString();
-
+                MessageBox.Show("You are logged in");
                 Order ord = new Order();
                 ord.Show();
                 this.Hide();
 
             }
             else
-
-                MessageBox.Show("No record found");
-
+            {
+                MessageBox.Show("Your details are incorrect, Please try again");
+            }
+            
 
             connect.Close();
+
 
         }
 
@@ -67,7 +73,7 @@ namespace PG_System
             connect.Open();
 
 
-            string Query = "SELECT * FROM EmployeeTb WHERE employeeId = '" + txtLogin.Text + "' AND surname = '" + txtPassword.Text + "'";
+            string Query = "SELECT * FROM EmployeeTb WHERE employeeId = " +txtLogin.Text;
 
             SqlCommand com = new SqlCommand(Query, connect);
             var reader = com.ExecuteReader();
@@ -75,10 +81,10 @@ namespace PG_System
             if (reader.Read())
             {
                 txtLogin.Text = reader["employeeId"].ToString();
-                txtPassword.Text = reader["surname"].ToString();
 
                 MaintainClient client = new MaintainClient();
                 client.Show();
+                this.Hide();
             }
             else
 
@@ -87,7 +93,7 @@ namespace PG_System
 
             connect.Close();
 
-
+          
 
         }
         private void Manager()
@@ -109,6 +115,7 @@ namespace PG_System
                 txtPassword.Text = reader["surname"].ToString();
                 MaintainEmployeeShifts maintain = new MaintainEmployeeShifts();
                 maintain.Show();
+                this.Hide();
             }
             else
 
@@ -117,6 +124,23 @@ namespace PG_System
 
             connect.Close();
 
+            
+
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            SignUp add = new SignUp();
+            add.Show();
+            this.Hide();
+        }
+
+       
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            Client();
+            
         }
     }
 }

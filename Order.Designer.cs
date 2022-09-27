@@ -45,12 +45,11 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.txtOrderRef = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.txtSurname = new System.Windows.Forms.TextBox();
             this.txtTotalCost = new System.Windows.Forms.TextBox();
+            this.lblShow = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -69,7 +68,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(107, 290);
+            this.label3.Location = new System.Drawing.Point(107, 272);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(126, 20);
             this.label3.TabIndex = 3;
@@ -79,7 +78,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(123, 250);
+            this.label4.Location = new System.Drawing.Point(123, 232);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(110, 20);
             this.label4.TabIndex = 4;
@@ -89,7 +88,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(133, 170);
+            this.label5.Location = new System.Drawing.Point(123, 153);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(110, 20);
             this.label5.TabIndex = 5;
@@ -99,7 +98,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(111, 205);
+            this.label6.Location = new System.Drawing.Point(111, 189);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(122, 20);
             this.label6.TabIndex = 6;
@@ -107,7 +106,7 @@
             // 
             // btnPay
             // 
-            this.btnPay.Location = new System.Drawing.Point(71, 404);
+            this.btnPay.Location = new System.Drawing.Point(69, 365);
             this.btnPay.Name = "btnPay";
             this.btnPay.Size = new System.Drawing.Size(441, 55);
             this.btnPay.TabIndex = 8;
@@ -117,21 +116,21 @@
             // 
             // txtAdults
             // 
-            this.txtAdults.Location = new System.Drawing.Point(239, 207);
+            this.txtAdults.Location = new System.Drawing.Point(239, 189);
             this.txtAdults.Name = "txtAdults";
             this.txtAdults.Size = new System.Drawing.Size(227, 20);
             this.txtAdults.TabIndex = 11;
             // 
             // txtKids
             // 
-            this.txtKids.Location = new System.Drawing.Point(239, 250);
+            this.txtKids.Location = new System.Drawing.Point(239, 234);
             this.txtKids.Name = "txtKids";
             this.txtKids.Size = new System.Drawing.Size(227, 20);
             this.txtKids.TabIndex = 12;
             // 
             // txtRooms
             // 
-            this.txtRooms.Location = new System.Drawing.Point(239, 292);
+            this.txtRooms.Location = new System.Drawing.Point(239, 272);
             this.txtRooms.Name = "txtRooms";
             this.txtRooms.Size = new System.Drawing.Size(227, 20);
             this.txtRooms.TabIndex = 13;
@@ -149,16 +148,18 @@
             // 
             // dateTimePicker1
             // 
+            this.dateTimePicker1.CalendarFont = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateTimePicker1.CustomFormat = "yyyy-MM-dd";
-            this.dateTimePicker1.Location = new System.Drawing.Point(239, 132);
+            this.dateTimePicker1.Location = new System.Drawing.Point(239, 119);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(227, 20);
             this.dateTimePicker1.TabIndex = 16;
             // 
             // dateTimePicker2
             // 
+            this.dateTimePicker2.CalendarFont = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateTimePicker2.CustomFormat = "yyyy-MM-dd";
-            this.dateTimePicker2.Location = new System.Drawing.Point(239, 170);
+            this.dateTimePicker2.Location = new System.Drawing.Point(239, 153);
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(227, 20);
             this.dateTimePicker2.TabIndex = 17;
@@ -196,34 +197,17 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(133, 132);
+            this.label2.Location = new System.Drawing.Point(133, 119);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(100, 20);
             this.label2.TabIndex = 2;
             this.label2.Text = "Check-In Date: ";
             // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(121, 72);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(112, 20);
-            this.label9.TabIndex = 19;
-            this.label9.Text = "Order reference: ";
-            // 
-            // txtOrderRef
-            // 
-            this.txtOrderRef.Location = new System.Drawing.Point(239, 72);
-            this.txtOrderRef.Name = "txtOrderRef";
-            this.txtOrderRef.Size = new System.Drawing.Size(227, 20);
-            this.txtOrderRef.TabIndex = 20;
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(157, 334);
+            this.label7.Location = new System.Drawing.Point(157, 318);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(76, 20);
             this.label7.TabIndex = 7;
@@ -233,7 +217,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(133, 102);
+            this.label10.Location = new System.Drawing.Point(133, 82);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(70, 20);
             this.label10.TabIndex = 21;
@@ -241,28 +225,37 @@
             // 
             // txtSurname
             // 
-            this.txtSurname.Location = new System.Drawing.Point(239, 102);
+            this.txtSurname.Location = new System.Drawing.Point(239, 82);
             this.txtSurname.Name = "txtSurname";
             this.txtSurname.Size = new System.Drawing.Size(227, 20);
             this.txtSurname.TabIndex = 22;
             // 
             // txtTotalCost
             // 
-            this.txtTotalCost.Location = new System.Drawing.Point(239, 334);
+            this.txtTotalCost.Location = new System.Drawing.Point(239, 318);
             this.txtTotalCost.Name = "txtTotalCost";
             this.txtTotalCost.Size = new System.Drawing.Size(227, 20);
             this.txtTotalCost.TabIndex = 23;
+            // 
+            // lblShow
+            // 
+            this.lblShow.AutoSize = true;
+            this.lblShow.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblShow.Location = new System.Drawing.Point(12, 9);
+            this.lblShow.Name = "lblShow";
+            this.lblShow.Size = new System.Drawing.Size(21, 20);
+            this.lblShow.TabIndex = 24;
+            this.lblShow.Text = "...";
             // 
             // Order
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(824, 471);
+            this.Controls.Add(this.lblShow);
             this.Controls.Add(this.txtTotalCost);
             this.Controls.Add(this.txtSurname);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.txtOrderRef);
-            this.Controls.Add(this.label9);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.dateTimePicker2);
             this.Controls.Add(this.dateTimePicker1);
@@ -306,11 +299,10 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox txtOrderRef;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txtSurname;
         private System.Windows.Forms.TextBox txtTotalCost;
+        private System.Windows.Forms.Label lblShow;
     }
 }

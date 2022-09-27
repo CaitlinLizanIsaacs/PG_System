@@ -28,11 +28,11 @@ namespace PG_System
 
             conn = new SqlConnection(connectionString);
             conn.Open();
-            cmd = new SqlCommand("INSERT INTO ClientCredTb (Id,surname,name,title,email) VALUES (@Id,@surname,@name,@title,@email)",
+            cmd = new SqlCommand("INSERT INTO ClientCredTb (password,surname,name,Title,email) VALUES (@password,@surname,@name,@Title,@email)",
                 conn);
-            cmd.Parameters.AddWithValue("@Id",txtId.Text);
+            cmd.Parameters.AddWithValue("@password",txtId.Text);
             cmd.Parameters.AddWithValue("@name",txtName.Text);
-            cmd.Parameters.AddWithValue("@title", txtTitle.Text );
+            cmd.Parameters.AddWithValue("@Title", txtTitle.Text );
             cmd.Parameters.AddWithValue("@surname", txtSurname.Text);
             cmd.Parameters.AddWithValue("@email", txtEmail.Text);
             cmd.ExecuteNonQuery();
@@ -130,10 +130,10 @@ namespace PG_System
             con = new SqlConnection(connectionString);
             con.Open();
 
-            string sql = "DELETE ClientCredTb WHERE Id=@Id";
+            string sql = "DELETE ClientCredTb WHERE surname=@surname";
             SqlCommand com = new SqlCommand(sql, con);
 
-            com.Parameters.AddWithValue("Id", txtId.Text);
+            com.Parameters.AddWithValue("surname", txtId.Text);
             
             com.ExecuteNonQuery();
 
